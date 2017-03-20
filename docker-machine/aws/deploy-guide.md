@@ -42,3 +42,6 @@ Log out and back in.
 By default, docker-machine exposes port 22 and port 2376. Port 2376 is necessary for Swarm mode communication. For this application, we need to open up ports 8080, 5000, 5001. This can be achieved by modifying the appropriate security group.
 
 Since Docker Swarm uses a routing mesh, the services can be accessed using any of the nodes using the public IP address and port numbers.
+
+**Reference:**  
+https://docs.docker.com/machine/drivers/aws/
