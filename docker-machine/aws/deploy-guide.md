@@ -14,8 +14,10 @@ This guide describes steps to deploy example-voting-app(https://github.com/docke
     docker-machine create --driver amazonec2 --amazonec2-ssh-keypath <keyfile> worker
 
 **Step 2:**  
-Add your user to the docker group. This is needed to execute Docker commands without using sudo. By default, "ubuntu" is chosen as username. This step is needed in both master and worker node.
-sudo gpasswd -a ubuntu docker
+Add your user to the docker group. This is needed to execute Docker commands without using sudo. By default, "ubuntu" is chosen as username. By default, "ubuntu" is chosen as username. This step is needed in both master and worker node.
+
+    sudo gpasswd -a ubuntu docker
+
 Log out and back in.
 
 **Step 3:**  
