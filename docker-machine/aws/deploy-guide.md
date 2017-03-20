@@ -1,6 +1,6 @@
 
 **Summary:**  
-This guide describes steps to deploy example-voting-app(https://github.com/docker/example-voting-app) to AWS cloud using docker-machine.
+This guide describes steps to deploy example-voting-app(https://github.com/docker/example-voting-app) to AWS cloud using docker-machine. We will use Docker Swarm mode for the application deployment.
 
 **Pre-requisities:**  
  - AWS cloud account 
