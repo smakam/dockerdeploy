@@ -12,6 +12,8 @@ This steps deploy example-voting-app(https://github.com/docker/example-voting-ap
     docker-machine create --driver azure --azure-subscription-id <subscription id> master
     docker-machine create --driver azure --azure-subscription-id <subscription id> worker
 
+By default, Azure uses standard A2 instance type. 
+
 **Step 2:**  
 Add your user to the docker group. This is needed to execute Docker commands without using sudo. By default, "docker-user" is chosen as username. This step is needed in both master and worker node.
 
