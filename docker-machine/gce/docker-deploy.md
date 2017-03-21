@@ -37,6 +37,8 @@ Log out and back in.
 **Deploy application:**  
 
     eval $(docker-machine env master)
+    git clone https://github.com/docker/example-voting-app.git
+    cd example-voting-app
     docker stack deploy --compose-file docker-stack.yml vote
 
 
