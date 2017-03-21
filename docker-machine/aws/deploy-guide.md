@@ -1,4 +1,3 @@
-
 **Summary:**  
 This guide describes steps to deploy example-voting-app(https://github.com/docker/example-voting-app) to AWS cloud using docker-machine. We will use Docker Swarm mode for the application deployment.
 
@@ -44,6 +43,14 @@ Log out and back in.
 By default, docker-machine exposes port 22 and 2376 and puts the EC2 nodes in new security group docker-machine. Port 2376 is used for older Swarm. For new Swarm mode, we need to expose tcp ports 2377, 7946 and udp ports 4789, 7946. For this application, we need to open up ports 8080, 5000, 5001. This can be achieved by modifying the appropriate security group.
 
 Since Docker Swarm uses a routing mesh, the services can be accessed using any of the nodes using the public IP address and port numbers.
+
+**Outputs:**  
+Following command shows the 2 node Swarm cluster:
+
+    $ docker node ls
+    ID                           HOSTNAME  STATUS  AVAILABILITY  MANAGER STATUS
+    c831p10u709xgwjn7hdm2fxgv    worker    Ready   Active        
+    hya2kk7w1id12cnfs4wzdn06a *  master    Ready   Active        Leader
 
 The stack and service status can be checked using following commands:
 
