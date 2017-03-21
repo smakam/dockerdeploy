@@ -41,9 +41,32 @@ Log out and back in.
 
 **Step 5:**  
 **Expose ports:**  
-By default, docker-machine exposes port 22 and port 2376. Port 2376 is necessary for Swarm mode communication. For this application, we need to open up ports 8080, 5000, 5001. This can be achieved by modifying the appropriate security group.
+By default, docker-machine exposes port 22 and 2376 and puts the EC2 nodes in new security group docker-machine. Port 2376 is used for older Swarm. For new Swarm mode, we need to expose tcp ports 2377, 7946 and udp ports 4789, 7946. For this application, we need to open up ports 8080, 5000, 5001. This can be achieved by modifying the appropriate security group.
 
 Since Docker Swarm uses a routing mesh, the services can be accessed using any of the nodes using the public IP address and port numbers.
+
+The stack and service status can be checked using following commands:
+
+    $ docker service ls
+    ID            NAME             MODE        REPLICAS  IMAGE
+    764j0d2099rb  vote_visualizer  replicated  1/1       dockersamples/visualizer:stable
+    8r8kam0xi5y6  vote_worker      replicated  1/1       dockersamples/examplevotingapp_worker:latest
+    tj2oggnnspwb  vote_db          replicated  1/1       postgres:9.4
+    tp9ghzq3zs05  vote_redis       replicated  2/2       redis:alpine
+    uebeyyf3if0x  vote_vote        replicated  2/2       dockersamples/examplevotingapp_vote:before
+    xzcimrcoktk0  vote_result      replicated  1/1       dockersamples/examplevotingapp_result:before
+
+    $ docker stack ps vote
+    ID            NAME               IMAGE                                         NODE    DESIRED STATE  CURRENT STATE           ERROR  PORTS
+    x1madunj2sks  vote_vote.1        dockersamples/examplevotingapp_vote:before    master  Running        Running 11 minutes ago         
+    y0wlnpm1e2wq  vote_db.1          postgres:9.4                                  master  Running        Running 10 minutes ago         
+    yzeus02p689g  vote_redis.1       redis:alpine                                  master  Running        Running 11 minutes ago         
+    qqyn26jymbse  vote_visualizer.1  dockersamples/visualizer:stable               master  Running        Running 10 minutes ago         
+    mdmqsi6ha5qw  vote_worker.1      dockersamples/examplevotingapp_worker:latest  master  Running        Running 10 minutes ago         
+    v5ntjw928122  vote_result.1      dockersamples/examplevotingapp_result:before  master  Running        Running 10 minutes ago         
+    hnj31jwvv1qj  vote_vote.2        dockersamples/examplevotingapp_vote:before    worker  Running        Running 12 minutes ago         
+    rips4tte3qn7  vote_redis.2       redis:alpine                                  worker  Running        Running 12 minutes ago   
+
 
 **Reference:**  
 https://docs.docker.com/machine/drivers/aws/
