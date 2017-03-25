@@ -59,5 +59,14 @@ Following command shows the running services of votingapp:
 As we can see above, "result" and "vote" services have external IP and they are exposed using google compute load balancer. 
 If we create the votingapp in kubernetes definition format from scratch, we can use persistent volumes and also deploy multiple replicas for each service. The goal here was to illustrate how we can take docker compose files and deploy using Kubernetes and not go into details of Kubernetes definition formats.
 
+**Delete service and cluster:**  
+Following command deletes votingapp service:
+
+    kubectl delete -f votingapp
+
+Following command deletes the 2 node container engine cluster:
+
+    gcloud container clusters delete example-cluster
+
 **Reference:**  
 https://cloud.google.com/container-engine/
