@@ -66,6 +66,20 @@ Following command deploys the application:
 
 Since this application has 3 services that exposes ports 8080, 5000 and 5001, Load balancer gets automatically created in Azure which is mapped to the Docker services. The 3 services can be accessed using load balancer domainname/IP address.
 
+Following output shows the running services:
+
+    $ docker stack ps vote
+    ID            NAME               IMAGE                                         NODE                 DESIRED STATE  CURRENT STATE              ERROR  PORTS
+    rqzcku75xixi  vote_result.1      dockersamples/examplevotingapp_result:before  swarm-worker000001   Running        Running about an hour ago         
+    fvksuitv82z1  vote_vote.1        dockersamples/examplevotingapp_vote:before    swarm-worker000000   Running        Running about an hour ago         
+    zl0ali52t0ea  vote_db.1          postgres:9.4                                  swarm-manager000000  Running        Running about an hour ago         
+    tu2g3onejhwb  vote_redis.1       redis:alpine                                  swarm-worker000001   Running        Running about an hour ago         
+    hib7019yak6j  vote_visualizer.1  dockersamples/visualizer:stable               swarm-manager000000  Running        Running about an hour ago         
+    qq1v4x0ll54q  vote_worker.1      dockersamples/examplevotingapp_worker:latest  swarm-manager000000  Running        Running about an hour ago         
+    do6megki7u5u  vote_vote.2        dockersamples/examplevotingapp_vote:before    swarm-worker000001   Running        Running about an hour ago         
+    ap1bpiwdk1lc  vote_redis.2       redis:alpine                                  swarm-worker000000   Running        Running about an hour ago        
+
+
 **Some Internals:**  
 
  - Docker uses custom linux distribution which has the latest kernel for master and worker nodes.
