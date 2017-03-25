@@ -1,0 +1,25 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    com.example.description: Vote
+    kompose.service.type: loadbalancer
+  creationTimestamp: null
+  name: vote
+spec:
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        service: vote
+    spec:
+      containers:
+      - image: docker/example-voting-app-vote:latest
+        name: vote
+        ports:
+        - containerPort: 80
+        resources: {}
+      restartPolicy: Always
+status: {}
