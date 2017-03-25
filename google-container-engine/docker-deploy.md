@@ -25,6 +25,11 @@ Following command shows the 2 node cluster created:
     gke-example-cluster-default-pool-8a5eb745-75ww   Ready     2h
     gke-example-cluster-default-pool-8a5eb745-gn1g   Ready     2h
 
+To ssh into the node, we can use:
+
+    gcloud compute ssh <nodename>
+
+
 **Step 2:**  
 **Deploy application:**  
 Since Kompose tool does not support Compose v3 format and the fact that it does not support named networks and volumes, I have created a custom voting compose file based on examples I found in kompose website. I used the compose file from here(https://github.com/smakam/dockerdeploy/blob/master/google-container-engine/docker-voting.yml). I have specified labels "kompose.service.type=loadbalancer" on vote and result service since these services needs to be exposed to outside world using load balancer.
