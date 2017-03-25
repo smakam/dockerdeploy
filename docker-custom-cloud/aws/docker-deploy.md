@@ -39,7 +39,7 @@ Following output shows the 3 node cluster created for me:
     ha1tt39qvba6v5x17m6gftyvj *  ip-172-31-31-244.ec2.internal  Ready   Active        Leader
     u7w5rwr289careporolfy6lkp    ip-172-31-24-119.ec2.internal  Ready   Active   
 
-From outside world, ssh is allowed only to the master node. From master node, we can ssh to worker nodes using the private network. 
+From outside world, ssh is allowed only to the master node. To ssh to master node, use "docker" as username along with the ssh key used when setting up the cluster. From master node, we can ssh to worker nodes using the private network. 
    
 **Step 3:**  
 **Deploy application:**  
