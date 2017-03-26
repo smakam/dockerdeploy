@@ -61,5 +61,7 @@ Following output shows the running services in the stack:
 
 With Swarm mode, there is no native integration to cloud services at this point. We need to open up ports 5000, 5001 and 8080 in the security group to access the service from  outside world.
 
+I saw a issue that deletion of Swarm mode cluster did not clean up the AWS resource properly and I had to manually do the deletion. 
+
 **Reference:**  
 https://docs.docker.com/docker-cloud/
