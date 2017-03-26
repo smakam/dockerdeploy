@@ -2,9 +2,9 @@
 The steps here deploys a voting application(https://github.com/docker/example-voting-app) in Docker datacenter that runs on AWS cloud. Docker Datacenter is Docker’s enterprise grade CaaS(Container as a service) solution where they have integrated their open source software with some proprietary software and support to make it into a commercial product. Docker datacenter can run in both public and private cloud. Docker datacenter runs Docker EE software. Docker datacenter is a paid software and can be tried out for free for 30 days.
 
 **Docker datacenter:**  
-Docker datacenter has the following components:
+Docker datacenter has the following components:  
 **UCP:**  
-UCP provides controller to manage the platform and it integrates well with Light weight directory access protocol(LDAP) and Role based access control(RBAC). This allows enterprises to integrate Docker Datacenter with their current user management solutions. Swarm mode is used for orchestration. UCP provides a nice GUI and same Docker APIs can be used to control UCP. Multiple UCP controllers can operate in HA mode. UCP also provides monitoring and logging support for Containers.
+UCP provides controller to manage the platform and it integrates well with Light weight directory access protocol(LDAP) and Role based access control(RBAC). This allows enterprises to integrate Docker Datacenter with their current user management solutions. Swarm mode is used for orchestration. UCP provides a nice GUI and same Docker APIs can be used to control UCP. Multiple UCP controllers can operate in HA mode. UCP also provides monitoring and logging support for Containers.  
 **DTR:**  
 DTR provides a secure Docker image repository and it integrates well with UCP.
 
@@ -16,6 +16,7 @@ DTR provides a secure Docker image repository and it integrates well with UCP.
 
 **Step 1:**  
 **Install Docker datacenter:**  
+Docker EE edition for AWS installation can be done from here(https://store.docker.com/editions/enterprise/docker-ee-aws?tab=description). 
 Following are the inputs needed from user:
 
  - Master - minimum count - 3, min size m4.large
