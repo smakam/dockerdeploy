@@ -89,7 +89,7 @@ Following output shows the running services:
  - Docker creates system containers in master and worker nodes that takes care of background tasks like tying in with logging, Load balancer. 
  - Upgrade is done using rolling upgrade of nodes - minimum 3 managers are needed
  - Logs from containers to a native cloud provider abstraction (a storage account in the created resource group)
- - cloudstor is used as volume plugin for persistent storage - available only in edge channel. I could not get this to work for me.
+ - cloudstor is used as volume plugin for persistent storage - available only in edge channel. I could not initially get this to work for me. The issue is caused by incorrect alias and I got it fixed by following the steps here(https://forums.docker.com/t/services-stuck-in-pending-when-using-cloudstor-azure-volumes/29938/10) 
 
 **Reference:**  
 https://docs.docker.com/docker-for-azure
