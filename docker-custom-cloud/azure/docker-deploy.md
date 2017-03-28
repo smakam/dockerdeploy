@@ -53,6 +53,9 @@ Following output shows the 3 node cluster created for me:
     quvgd3cf3lckc64z3u9qgvfxi    swarm-worker000000   Ready   Active 
 
 From outside world, ssh is allowed only to the master node. From master node, we can ssh to worker nodes using the private network. 
+Azure uses a different port to expose ssh. Following command can be used to ssh to master node:
+
+    ssh -i ~/.ssh/id_rsa -p 50000 docker@<masterip>
    
 **Step 3:**  
 **Deploy application:**  
