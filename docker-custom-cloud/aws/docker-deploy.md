@@ -54,7 +54,7 @@ Since this application has 3 services that exposes ports 8080, 5000 and 5001, an
  - Docker uses custom linux distribution which has the latest kernel for master and worker nodes.
  - Docker creates system containers in master and worker nodes that takes care of background tasks like tying in with AWS logs, ELB etc.
  - Upgrade is done using rolling upgrade of nodes - minimum 3 managers are needed
- - cloudstor is used as volume plugin for persistent storage - available only in edge channel. I could not get this to work for me.
+ - cloudstor is used as volume plugin for persistent storage - available only in edge channel. I could not initially get this to work. The issue is caused by incorrect alias and I got it fixed by following the steps here(https://forums.docker.com/t/services-stuck-in-pending-when-using-cloudstor-azure-volumes/29938/10). The correction steps are same for AWS and Azure. 
   
 
 **Reference:**  
