@@ -1,0 +1,43 @@
+version: "2"
+
+services:
+  vote:
+    image: docker/example-voting-app-vote:latest
+    labels:
+     - "com.example.description=Vote"
+    ports:
+      - "5000:80"
+    networks:
+      - front-tier
+      - back-tier
+
+  redis:
+    image: redis:alpine
+    ports: ["6379"]
+    networks:
+      - back-tier
+
+  worker:
+    image: docker/example-voting-app-worker:latest
+    networks:
+      - back-tier
+
+  db:
+    image: postgres:9.4
+    ports: ["5432"]
+    labels:
+     - "com.example.description=Postgres Database"
+    networks:
+      - back-tier
+
+  result:
+    image: tmadams333/example-voting-app-result:latest
+    ports:
+      - "5001:80"
+    networks:
+      - front-tier
+      - back-tier
+
+networks:
+  front-tier:
+  back-tier:
