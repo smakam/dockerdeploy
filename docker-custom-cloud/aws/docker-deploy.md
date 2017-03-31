@@ -16,13 +16,13 @@ Following are some integrations that Docker has added as part of this offering:
  - AWS ssh key needs to be created
 
 **Step 1:**  
-**Setup AWS Infra**
+**Setup AWS Infra**  
 If you are logging in as IAM user, appropriate permissions have to be defined so that Cloudformation can create the necessary resources. This is achieved by creating IAM role as defined here(https://docs.docker.com/docker-for-aws/iam-permissions/). Since I have not logged in as IAM user, I did not have to do this. 
 The default Cloudformation template creates new AWS VPC. If you want to use existing VPC, the VPC should be setup like this(https://docs.docker.com/docker-for-aws/faqs/#can-i-use-my-existing-vpc).
 
 **Step 2:**  
 **Create cluster**  
-We need to select the Docker CE version here. This can either be "stable" or "edge" versions. The links corresponding to the version will start AWS with appropriate cloudformation template. 
+There is a link here(https://docs.docker.com/docker-for-aws/#docker-community-edition-ce-for-aws) where we can select the Docker version to be installed. This can either be "stable" or "edge" versions. The edge version has features that has not been fully tested. For this example, I have selected the Docker CE edge version.The links corresponding to the version will start AWS with appropriate cloudformation template. 
 Following are some major inputs to be specified as part of Cloudformation template:
 
  - Number of master nodes. (I used 1)
@@ -54,7 +54,7 @@ Since this application has 3 services that exposes ports 8080, 5000 and 5001, an
  - Docker uses custom linux distribution which has the latest kernel for master and worker nodes.
  - Docker creates system containers in master and worker nodes that takes care of background tasks like tying in with AWS logs, ELB etc.
  - Upgrade is done using rolling upgrade of nodes - minimum 3 managers are needed
- - cloudstor is used as volume plugin for persistent storage - available only in edge channel. I could not get this to work for me.
+ - cloudstor is used as volume plugin for persistent storage - available only in edge channel. I could not initially get this to work. The issue is caused by incorrect alias and I got it fixed by following the steps here(https://forums.docker.com/t/services-stuck-in-pending-when-using-cloudstor-azure-volumes/29938/10). The correction steps are same for AWS and Azure. 
   
 
 **Reference:**  

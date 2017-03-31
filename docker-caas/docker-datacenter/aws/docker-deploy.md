@@ -34,4 +34,7 @@ To deploy the votingapp, we can select stacks and applications->Deploy option. W
 
 **Reference:**  
 https://www.docker.com/enterprise-edition  
-https://docs.docker.com/datacenter/install/aws/
+https://docs.docker.com/datacenter/install/aws/  
+https://docs.docker.com/datacenter/ucp/2.1/guides/  
+https://docs.docker.com/datacenter/dtr/2.2/guides/  
+

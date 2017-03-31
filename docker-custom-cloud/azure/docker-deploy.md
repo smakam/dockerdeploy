@@ -34,7 +34,7 @@ The following output will be displayed on successful creation of service princip
 
 **Step 2:**  
 **Create cluster**  
-There is a link here(https://docs.docker.com/docker-for-azure/#docker-community-edition-ce-for-azure) to involve the Azure template. We can either be "stable" or "edge" Docker CE versions. The links corresponding to the version will start with appropriate Azure template. 
+There is a link here(https://docs.docker.com/docker-for-azure/#docker-community-edition-ce-for-azure) to invoke the Azure template. We can choose either the "stable" or "edge" Docker CE versions. The "edge" version has latest features that are not fully tested. For this example, I have chosedn the "edge" version. The links corresponding to the version will start with appropriate Azure template. 
 Following are some major inputs to be specified as part of Azure template:
 
  - App id, App secret, resource group name, resource group location. This is got from step 1 above. 
@@ -53,6 +53,9 @@ Following output shows the 3 node cluster created for me:
     quvgd3cf3lckc64z3u9qgvfxi    swarm-worker000000   Ready   Active 
 
 From outside world, ssh is allowed only to the master node. From master node, we can ssh to worker nodes using the private network. 
+Azure uses a different port to expose ssh. Following command can be used to ssh to master node:
+
+    ssh -i ~/.ssh/id_rsa -p 50000 docker@<masterip>
    
 **Step 3:**  
 **Deploy application:**  
@@ -86,7 +89,7 @@ Following output shows the running services:
  - Docker creates system containers in master and worker nodes that takes care of background tasks like tying in with logging, Load balancer. 
  - Upgrade is done using rolling upgrade of nodes - minimum 3 managers are needed
  - Logs from containers to a native cloud provider abstraction (a storage account in the created resource group)
- - cloudstor is used as volume plugin for persistent storage - available only in edge channel. I could not get this to work for me.
+ - cloudstor is used as volume plugin for persistent storage - available only in edge channel. I could not initially get this to work. The issue is caused by incorrect alias and I got it fixed by following the steps here(https://forums.docker.com/t/services-stuck-in-pending-when-using-cloudstor-azure-volumes/29938/10) 
 
 **Reference:**  
 https://docs.docker.com/docker-for-azure
