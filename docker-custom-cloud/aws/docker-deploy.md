@@ -42,7 +42,7 @@ Following output shows the 3 node cluster created for me. This can be viewed fro
 From outside world, ssh is allowed only to the master node. To ssh to master node, use "docker" as username along with the ssh key used when setting up the cluster. From master node, we can ssh to worker nodes using the private network. 
    
 **Step 3:**  
-**Deploy application:** 
+**Deploy application:**  
 Following command deploys the application:  
 
     docker stack deploy --compose-file docker-stack.yml vote
