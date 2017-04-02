@@ -43,7 +43,7 @@ From outside world, ssh is allowed only to the master node. To ssh to master nod
    
 **Step 3:**  
 **Deploy application:** 
-Following command deploys the application:
+Following command deploys the application:  
 
     docker stack deploy --compose-file docker-stack.yml vote
 
