@@ -59,7 +59,7 @@ Following output shows the running containers in 1 of the agent nodes:
 
 At this point, the "vote" and "result" container can be exposed from the agent node by exposing ports 5000 and 5001 using security group. 
 
-We can create 	ECS service on top of the tasks and expose them using AWS load balancer ELB or ALB. To achieve this, we need to first create the load balancer in AWS and then create service using ECS GUI. When service is created, we can specify the load balancer name. 
+We can create 	ECS service on top of the tasks and expose them using AWS load balancer ELB or ALB. To achieve this, we need to first create the load balancer in AWS and then create service using ECS GUI. When service is created, we can specify the load balancer name.  When we create load balancer, we need to make sure that it is in same VPC as the instances. Also, make sure that the security group exposes the necessary ports. 
 
 Overall, I found task and service deployment model very restrictive in ECS. Following are some limitations I see:
 
