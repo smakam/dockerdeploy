@@ -36,6 +36,10 @@ Following command shows the 2 nodes that are part of "ecscluster":
 
 ecs-cli supports docker-compose formats with some limitations(http://stackoverflow.com/questions/37466422/ec2-container-service-networking). Compose v2 format with named networks and volumes is not supported. Also, compose v3 format is not possible because v3 format is specific to swarm mode. ECS supports only Docker host and bridge mode and not overlay. To have 2 containers to talk to each other, the only way is using links. That means related containers have to stay in same host. 
 
+We need to set the ecs-cli context to the cluster that we created above. This can be done using the following command:
+
+    ecs-cli configure --cluster <clustername>
+
 Following command deploys the tasks of votingapp using docker-compose:
 
     ecs-cli compose -f docker-voting-aws up
