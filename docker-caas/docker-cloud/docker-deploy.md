@@ -4,6 +4,9 @@ The steps here deploys a voting application(https://github.com/docker/example-vo
 **Docker cloud:**  
 Docker cloud is a hosted service from Docker to manage Containers. Earlier, Docker cloud used its own orchestration engine, networking and stack file format. With Swarm mode, Docker cloud is starting to use the common Docker infrastructure tools. Docker cloud is free to try for 1 private repository and node and is chargeable after that. With Swarm mode, Docker cloud GUI cannot be used to manage applications. I think this would change soon as the feature comes out of beta mode. At this point, Docker cloud is supported only with AWS in Swarm mode. In older mode, other cloud providers like Azure, Google cloud is supported. Even though "docker-cloud" CLI option is available, it does not seem to be integrated yet with Swarm mode. 
 
+**Video:**  
+[![Docker votingapp on Docker cloud](https://github.com/smakam/dockerdeploy/blob/master/images/dockercloud.jpg)](https://www.youtube.com/watch?v=RCc_y1L1uag")
+
 **Pre-requisites:**  
 
  - Docker cloud account. Docker hub account can be used.
