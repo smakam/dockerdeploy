@@ -8,6 +8,9 @@ Following are some integrations that Docker has added as part of this offering:
  - Load balancer gets automatically created when new Docker services are created and exposes the services. 
  - Google infrastructure internals like virtual network, load balancer gets automatically created. 
 
+**Video:**  
+[![Docker custom cloud](https://github.com/smakam/dockerdeploy/blob/master/images/dockercustomcloud.jpg)](https://www.youtube.com/watch?v=l2Yy8poceuY")
+
 **Pre-requisities:**
  - Google cloud account 
  - Sign up for beta. The beta will be tied to your Google account after approval
