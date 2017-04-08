@@ -5,6 +5,14 @@ The steps here deploys a voting application(https://github.com/docker/example-vo
 AWS provides EC2 Container service(ECS) for folks who want to deploy managed Docker containers in AWS infrastructure. With ECS, Amazon provides its own scheduler to manage Docker containers. ECS installs agents in each node that allows scheduler to interact with agents. ECS integrates very well with other AWS services including elb/alb load balancer, cloudwatch logging service, cloudformation templates etc. AWS recently introduced Application load balancer(ALB) that does L7 load balancing and this integrates well with ECS. Using ALB, we can load balance services directly across Containers. With ECS, users get charged for the EC2 instances and not for the Containers.
 ECS container services can be described as a json file. There are 2 parts: First is the task definition format that describes the containers composing the application and how they are linked. Second is the service definition format that describes how many instances of task needs to run and how they need to be exposed to outside including load balancer. In docker-compose version 3, both the task and service definition are combined into 1 file. ECS support docker-compose version 2 with many limitations. 
 
+**Video:**  
+[![Docker votingapp on ECS](https://github.com/smakam/dockerdeploy/blob/master/images/dockerecs.jpg)](https://www.youtube.com/watch?v=XTPolZaJbXQ")
+
+**Prerequisites:**  
+
+ - AWS cloud account
+ - aws cli and ecs-cli installation
+
 **Step 1:**  
 **Create IAM role:**  
 Following link(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/instance_IAM_role.html) specifies how to create role that allows ECS container agent to call ECS api.  Using this, I created role "AmazonECSContainerInstanceRole". We need to use this role when creating the cluster.
