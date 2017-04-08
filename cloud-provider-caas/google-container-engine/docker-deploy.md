@@ -12,8 +12,9 @@ Google container engine uses Kubernetes as orchestration engine with Docker as r
 
 **Step 1:**  
 **Create cluster:**  
-Use the following command to create a 2 node container cluster:
-gcloud container clusters create example-cluster --machine-type g1-small --num-nodes 2
+Use the following command to create a 2 node container cluster:  
+
+    gcloud container clusters create example-cluster --machine-type g1-small --num-nodes 2
 
 **Note:**  
 kubectl uses the credentials  in ~/.kube/config to access the cluster
