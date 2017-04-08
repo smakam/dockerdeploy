@@ -62,7 +62,7 @@ Following output shows the running services in the stack:
 
 For services that are exposed to outside world, Docker cloud will automatically create connect the services to AWS ELB. This is achieved by running system containers in the Container nodes which will register to ELB when new services are created. We can access the vote and result service using the ELB domain address. 
 
-I saw a issue that deletion of Swarm mode cluster did not clean up the AWS resource properly and I had to manually do the deletion. 
+I saw a issue that deletion of Swarm mode cluster did not clean up the AWS resource properly and I had to manually do the deletion. When we try to remove the cluster from Docker cloud, it gives a warning that it does not remove the cluster. 1 way to manually clean up is to go to cloudformation section of AWS console and delete the stack manually. 
 
 **Reference:**  
 https://docs.docker.com/docker-cloud/
