@@ -47,9 +47,10 @@ Use the following command to deploy the votingapp:
 
     kubectl create -f vote_service
 
-To access the Kubernetes dashboard, we can proxy to local webserver using:
-kubectl proxy
-Then navigate to this link in your browser: localhost:8001/ui
+To access the Kubernetes dashboard, we can proxy to local webserver using:  
+
+    kubectl proxy
+Then navigate to this link in your browser: http://localhost:8001/ui
 
 Following command shows the running services of votingapp:
 
