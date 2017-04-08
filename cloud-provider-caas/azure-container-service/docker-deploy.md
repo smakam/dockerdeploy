@@ -11,6 +11,9 @@ Azure container service(ACS) is a managed container offering from Azure cloud. F
  - There is automatic load balancer integration for services that needs to be exposed externally.
  - Azure container registry integration available for ACS.
 
+**Video:**  
+[![Docker votingapp on ACS](https://github.com/smakam/dockerdeploy/blob/master/images/dockeracs.jpg)](https://www.youtube.com/watch?v=jTO4gCXljNs")
+
 **Pre-requisites:**  
 
  - Azure cloud account
