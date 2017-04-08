@@ -1,6 +1,8 @@
 **Summary:**  
 This guide describes steps to deploy example-voting-app(https://github.com/docker/example-voting-app) to AWS cloud using docker-machine. We will use Docker Swarm mode for the application deployment.
 
+[![docker machine](https://github.com/smakam/dockerdeploy/blob/master/images/dockermachine.png)](https://www.youtube.com/watch?v=EDBw1NWUJyk")
+
 **Pre-requisities:**  
  - AWS cloud account 
  - Install docker-machine 0.10.0 
