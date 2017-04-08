@@ -31,7 +31,7 @@ Following are some major inputs to be specified as part of Cloudformation templa
  - Number of worker nodes (I used 2)
  - Instance type of worker nodes. (I used t2.micro)
 
-Following output shows the 3 node cluster created for me:
+Following output shows the 3 node cluster created for me. This can be viewed from master node. 
 
     $ docker node ls
     ID                           HOSTNAME                       STATUS  AVAILABILITY  MANAGER STATUS
@@ -43,6 +43,7 @@ From outside world, ssh is allowed only to the master node. To ssh to master nod
    
 **Step 3:**  
 **Deploy application:**  
+Following command deploys the application:  
 
     docker stack deploy --compose-file docker-stack.yml vote
 

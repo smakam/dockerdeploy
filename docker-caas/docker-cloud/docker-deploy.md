@@ -7,15 +7,16 @@ Docker cloud is a hosted service from Docker to manage Containers. Earlier, Dock
 **Pre-requisites:**  
 
  - Docker cloud account. Docker hub account can be used.
+ - Select Swarm mode in Docker cloud.
  - AWS cloud account.
 
 **Step 1:**  
 **Registering cloud provider:**  
-The first step is to create IAM role in AWS to allow Docker cloud to access AWS resources and then register AWS cloud provider in Docker cloud. This can be done using the procedure here(https://docs.docker.com/docker-cloud/cloud-swarm/link-aws-swarm/#attach-a-policy-for-legacy-aws-links). 
+The first step is to create IAM role in AWS to allow Docker cloud to access AWS resources and then register AWS cloud provider in Docker cloud. This can be done using the procedure here(https://docs.docker.com/docker-cloud/cloud-swarm/link-aws-swarm/#attach-a-policy-for-legacy-aws-links). We need to get the Role ARN from AWS and add it in Docker cloud. Docker cloud can be accessed from https://cloud.docker.com. We can go to Cloud settings->Service provider and add the ARN.
 
 **Step 2:**  
 **Creating cluster:**  
-We can create a cluster from Docker cloud interface. The only option available is to create cluster in AWS cloud using this option. We need to mention inputs like manager, worker count, instance type, ssh key etc.  I chose manager count of 1 and worker count of 2. 
+We can create a cluster from Docker cloud interface. The only option available is to create cluster in AWS cloud using the Swarm mode. We need to mention inputs like manager, worker count, instance type, ssh key etc.  I chose manager count of 1 and worker count of 2. 
 
 To manage this cluster from linux host, we can run the following container in our linux host and specify the cluster name that we created in Docker cloud. We would have to login to Docker cloud as part of command below.
 
@@ -59,9 +60,9 @@ Following output shows the running services in the stack:
     re9ehsitmvdr  vote_redis.2       redis:alpine                                  ip-172-31-46-9.ec2.internal   Running        Running 20 seconds ago           
     h0xupbp3jq9z  vote_vote.2        dockersamples/examplevotingapp_vote:before    ip-172-31-14-29.ec2.internal  Running        Running 30 seconds ago   
 
-With Swarm mode, there is no native integration to cloud services at this point. We need to open up ports 5000, 5001 and 8080 in the security group to access the service from  outside world.
+For services that are exposed to outside world, Docker cloud will automatically create connect the services to AWS ELB. This is achieved by running system containers in the Container nodes which will register to ELB when new services are created. We can access the vote and result service using the ELB domain address. 
 
-I saw a issue that deletion of Swarm mode cluster did not clean up the AWS resource properly and I had to manually do the deletion. 
+I saw a issue that deletion of Swarm mode cluster did not clean up the AWS resource properly and I had to manually do the deletion. When we try to remove the cluster from Docker cloud, it gives a warning that it does not remove the cluster. 1 way to manually clean up is to go to cloudformation section of AWS console and delete the stack manually. 
 
 **Reference:**  
 https://docs.docker.com/docker-cloud/

@@ -1,9 +1,9 @@
 **Summary:**  
-The steps here deploys a voting application(https://github.com/docker/example-voting-app) in AWS ECS. We have used the docker-compose application definition format rather than ECS task and service definition format for this example. 
+The steps here deploys a voting application(https://github.com/docker/example-voting-app) in AWS ECS. I have used the docker-compose application definition format rather than ECS task and service definition format for this example. 
 
 **ECS:**  
-AWS provides EC2 Container service(ECS) for folks who want to deploy managed Docker containers in AWS infrastructure. With ECS, Amazon provides its own scheduler to manage Docker containers. ECS installs agents in each node that allows scheduler to interact with agents. ECS integrates very well with other AWS services including load balancer, logging service, cloudformation templates etc. AWS recently introduced Application load balancer(ALB) that does L7 load balancing and this integrates well with ECS. Using ALB, we can load balance services directly across Containers. With ECS, users get charged for the EC2 instances and not for the Containers.
-ECS services can be described as a json file. There are 2 parts: First is the task definition format that describes the containers composing the application and how they are linked. Second is the service definition format that describes how many instances of task needs to run and how they need to be exposed to outside including load balancer. In docker-compose version 3, both the task and service definition are combined into 1 file. ECS support docker-compose version 2 with many limitations. 
+AWS provides EC2 Container service(ECS) for folks who want to deploy managed Docker containers in AWS infrastructure. With ECS, Amazon provides its own scheduler to manage Docker containers. ECS installs agents in each node that allows scheduler to interact with agents. ECS integrates very well with other AWS services including elb/alb load balancer, cloudwatch logging service, cloudformation templates etc. AWS recently introduced Application load balancer(ALB) that does L7 load balancing and this integrates well with ECS. Using ALB, we can load balance services directly across Containers. With ECS, users get charged for the EC2 instances and not for the Containers.
+ECS container services can be described as a json file. There are 2 parts: First is the task definition format that describes the containers composing the application and how they are linked. Second is the service definition format that describes how many instances of task needs to run and how they need to be exposed to outside including load balancer. In docker-compose version 3, both the task and service definition are combined into 1 file. ECS support docker-compose version 2 with many limitations. 
 
 **Step 1:**  
 **Create IAM role:**  
@@ -36,6 +36,10 @@ Following command shows the 2 nodes that are part of "ecscluster":
 
 ecs-cli supports docker-compose formats with some limitations(http://stackoverflow.com/questions/37466422/ec2-container-service-networking). Compose v2 format with named networks and volumes is not supported. Also, compose v3 format is not possible because v3 format is specific to swarm mode. ECS supports only Docker host and bridge mode and not overlay. To have 2 containers to talk to each other, the only way is using links. That means related containers have to stay in same host. 
 
+We need to set the ecs-cli context to the cluster that we created above. This can be done using the following command:
+
+    ecs-cli configure --cluster <clustername>
+
 Following command deploys the tasks of votingapp using docker-compose:
 
     ecs-cli compose -f docker-voting-aws up
@@ -55,7 +59,7 @@ Following output shows the running containers in 1 of the agent nodes:
 
 At this point, the "vote" and "result" container can be exposed from the agent node by exposing ports 5000 and 5001 using security group. 
 
-We can create 	ECS service on top of the tasks and expose them using AWS load balancer ELB or ALB. To achieve this, we need to first create the load balancer in AWS and then create service using ECS GUI. When service is created, we can specify the load balancer name. 
+We can create 	ECS service on top of the tasks and expose them using AWS load balancer ELB or ALB. To achieve this, we need to first create the load balancer in AWS and then create service using ECS GUI. When service is created, we can specify the load balancer name.  When we create load balancer, we need to make sure that it is in same VPC as the instances. Also, make sure that the security group exposes the necessary ports. 
 
 Overall, I found task and service deployment model very restrictive in ECS. Following are some limitations I see:
 

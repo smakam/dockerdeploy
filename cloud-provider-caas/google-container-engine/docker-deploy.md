@@ -12,8 +12,9 @@ Google container engine uses Kubernetes as orchestration engine with Docker as r
 
 **Step 1:**  
 **Create cluster:**  
-Use the following command to create a 2 node container cluster:
-gcloud container clusters create example-cluster --machine-type g1-small --num-nodes 2
+Use the following command to create a 2 node container cluster:  
+
+    gcloud container clusters create example-cluster --machine-type g1-small --num-nodes 2
 
 **Note:**  
 kubectl uses the credentials  in ~/.kube/config to access the cluster
@@ -32,23 +33,24 @@ To ssh into the node, we can use:
 
 **Step 2:**  
 **Deploy application:**  
-Since Kompose tool does not support Compose v3 format and the fact that it does not support named networks and volumes, I have created a custom voting compose file based on examples I found in kompose website. I used the compose file from here(https://github.com/smakam/dockerdeploy/blob/master/google-container-engine/docker-voting.yml). I have specified labels "kompose.service.type=loadbalancer" on vote and result service since these services needs to be exposed to outside world using load balancer.
+Since Kompose tool does not support Compose v3 format and the fact that it does not support named networks and volumes, I have created a custom voting compose file based on examples I found in kompose website. I used the compose file from here(https://github.com/smakam/dockerdeploy/blob/master/cloud-provider-caas/google-container-engine/docker-voting.yml). I have specified labels "kompose.service.type=loadbalancer" on vote and result service since these services needs to be exposed to outside world using load balancer.
 
 **Convert compose to Kubernetes definition format:**  
 Use the following command to do the conversion:
 
     kompose convert -f docker-voting
 
-I have also put the converted Kubernetes definition files here(https://github.com/smakam/dockerdeploy/tree/master/google-container-engine/votingapp)
+I have also put the converted Kubernetes definition files here(https://github.com/smakam/dockerdeploy/tree/master/cloud-provider-caas/google-container-engine/votingapp)
 
 **Deploy the votingapp:**  
 Use the following command to deploy the votingapp:
 
     kubectl create -f vote_service
 
-To access the Kubernetes dashboard, we can proxy to local webserver using:
-kubectl proxy
-Then navigate to this link in your browser: localhost:8001/ui
+To access the Kubernetes dashboard, we can proxy to local webserver using:  
+
+    kubectl proxy
+Then navigate to this link in your browser: http://localhost:8001/ui
 
 Following command shows the running services of votingapp:
 
