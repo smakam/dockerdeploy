@@ -60,7 +60,7 @@ Following output shows the running services in the stack:
     re9ehsitmvdr  vote_redis.2       redis:alpine                                  ip-172-31-46-9.ec2.internal   Running        Running 20 seconds ago           
     h0xupbp3jq9z  vote_vote.2        dockersamples/examplevotingapp_vote:before    ip-172-31-14-29.ec2.internal  Running        Running 30 seconds ago   
 
-With Swarm mode, there is no native integration to cloud services at this point. We need to open up ports 5000, 5001 and 8080 in the security group to access the service from  outside world.
+For services that are exposed to outside world, Docker cloud will automatically create connect the services to AWS ELB. This is achieved by running system containers in the Container nodes which will register to ELB when new services are created. We can access the vote and result service using the ELB domain address. 
 
 I saw a issue that deletion of Swarm mode cluster did not clean up the AWS resource properly and I had to manually do the deletion. 
 
