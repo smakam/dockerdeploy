@@ -1,6 +1,9 @@
 **Summary:**  
 This steps deploy example-voting-app(https://github.com/docker/example-voting-app) to Azure cloud using docker-machine
 
+**Video:**  
+[![docker machine](https://github.com/smakam/dockerdeploy/blob/master/images/dockermachine.jpg)](https://www.youtube.com/watch?v=EDBw1NWUJyk")
+
 **Pre-requisities:**
  - Azure cloud account 
  - Install docker-machine 0.10.0 
