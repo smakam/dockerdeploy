@@ -4,6 +4,9 @@ The steps here deploys a voting application(https://github.com/docker/example-vo
 **Google container engine:**  
 Google container engine uses Kubernetes as orchestration engine with Docker as runtime. Google container engine nicely integrates Kubernetes with Google compute engine components. Compared to base Kubernetes, Google container engine adds value by managing installation of kubernetes and its components, doing cluster management and load balancing.
 
+**Video:**  
+[![Docker votingapp on GKE](https://github.com/smakam/dockerdeploy/blob/master/images/dockergke.jpg)](https://www.youtube.com/watch?v=roioT5Zp534")
+
 **Pre-requisites:**  
 
  - Google cloud account
