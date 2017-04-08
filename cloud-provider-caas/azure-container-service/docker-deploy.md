@@ -21,7 +21,7 @@ Azure container service(ACS) is a managed container offering from Azure cloud. F
 Using ACS service, we can create the cluster. Following are the inputs needed:
 
  - Orchestrator. Supported options are Docker swarm, Kubernetes, Mesos. I have used Docker Swarm for this example.
- - Master. We need to specify the number of Masters, dns name, username, public key for ssh. I have used Master count 1.
+ - Master. We need to specify the number of Masters, dns name, username, public key for ssh. I have used Master count 1. For Master node, there is no option to specify node type. dnsname is used to access the cluster later on.
  - Agent. We need to specify the number and type of agent nodes. I have used agent count of 2 and type as standard A2.
 
 ACS will create all necessary infrastructure including master node, agent node, load balancer and associated networking and storage constructs. ACS will also install Docker Swarm and the necessary Docker components to make a Swarm cluster between the master and agent nodes. 
@@ -77,7 +77,7 @@ Since ACS does not use Swarm mode and uses older Swarm, we need to use voting ap
 
 I used the following command to deploy the votingapp:
 
-    docker-compose -f docker-voting-azure up -d
+    docker-compose -f docker-voting-azure.yml up -d
 
 Following output shows the running services:
 
