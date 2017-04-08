@@ -9,7 +9,7 @@ UCP provides controller to manage the platform and it integrates well with Light
 DTR provides a secure Docker image repository and it integrates well with UCP.
 
 **Video:**  
-[![Docker votingapp on DDC](https://github.com/smakam/dockerdeploy/blob/master/images/dockerddc.jpg)](https://www.youtube.com/edit?o=U&video_id=kA9mFndfLIA")
+[![Docker votingapp on DDC](https://github.com/smakam/dockerdeploy/blob/master/images/dockerddc.jpg)](https://www.youtube.com/watch?v=kA9mFndfLIA")
 
 **Pre-requisites:**  
 
