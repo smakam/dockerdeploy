@@ -10,6 +10,9 @@ Following are some integrations that Docker has added as part of this offering:
  - Logs are automatically directed to Azure logger service.
  - Azure infrastructure internals like virtual network, load balancer gets automatically created. 
 
+**Video:**  
+[![Docker custom cloud](https://github.com/smakam/dockerdeploy/blob/master/images/dockercustomcloud.jpg)](https://www.youtube.com/watch?v=l2Yy8poceuY")
+
 **Pre-requisities:**
  - Azure cloud account 
  - Azure subscription ID
