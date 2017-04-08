@@ -7,15 +7,16 @@ Docker cloud is a hosted service from Docker to manage Containers. Earlier, Dock
 **Pre-requisites:**  
 
  - Docker cloud account. Docker hub account can be used.
+ - Select Swarm mode in Docker cloud.
  - AWS cloud account.
 
 **Step 1:**  
 **Registering cloud provider:**  
-The first step is to create IAM role in AWS to allow Docker cloud to access AWS resources and then register AWS cloud provider in Docker cloud. This can be done using the procedure here(https://docs.docker.com/docker-cloud/cloud-swarm/link-aws-swarm/#attach-a-policy-for-legacy-aws-links). 
+The first step is to create IAM role in AWS to allow Docker cloud to access AWS resources and then register AWS cloud provider in Docker cloud. This can be done using the procedure here(https://docs.docker.com/docker-cloud/cloud-swarm/link-aws-swarm/#attach-a-policy-for-legacy-aws-links). We need to get the Role ARN from AWS and add it in Docker cloud. Docker cloud can be accessed from https://cloud.docker.com. We can go to Cloud settings->Service provider and add the ARN.
 
 **Step 2:**  
 **Creating cluster:**  
-We can create a cluster from Docker cloud interface. The only option available is to create cluster in AWS cloud using this option. We need to mention inputs like manager, worker count, instance type, ssh key etc.  I chose manager count of 1 and worker count of 2. 
+We can create a cluster from Docker cloud interface. The only option available is to create cluster in AWS cloud using the Swarm mode. We need to mention inputs like manager, worker count, instance type, ssh key etc.  I chose manager count of 1 and worker count of 2. 
 
 To manage this cluster from linux host, we can run the following container in our linux host and specify the cluster name that we created in Docker cloud. We would have to login to Docker cloud as part of command below.
 
