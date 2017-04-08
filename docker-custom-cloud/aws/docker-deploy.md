@@ -11,6 +11,9 @@ Following are some integrations that Docker has added as part of this offering:
  - Logs are automatically directed to AWS cloudwatch log service.
  - AWS infrastructure internals like VPC, Subnet, IAM profiles gets automatically created. 
 
+**Video:**  
+[![Docker custom cloud](https://github.com/smakam/dockerdeploy/blob/master/images/dockercustomcloud.jpg)](https://www.youtube.com/watch?v=l2Yy8poceuY")
+
 **Pre-requisities:**
  - AWS cloud account 
  - AWS ssh key needs to be created
